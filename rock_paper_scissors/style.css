@@ -8,3 +8,35 @@ body{
     background-color: #000;
     color: #fff;
 }
+
+main{
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-body{
+    background-color: green;
+}
+
+.box{
+    border: 1px solid #fff;
+    height: 20vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.computer_choice{
+    color: aqua;
+}
+.user_choice{
+    color: red;
+}
+
+.buttonOption{
+    padding: 1rem 3rem;
+    border: 5px solid green;
+}

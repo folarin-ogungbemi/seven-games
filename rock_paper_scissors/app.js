@@ -1,39 +1,47 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const computerChoiceDisplay = document.getElementsByClassName('computer_choice')[0];
-    const userChoiceDisplay = document.getElementsByClassName('user_choice')[0];
-    const resultDisplay = document.getElementsByClassName('result')[0];
-    const buttons = document.querySelectorAll('button');
-    const choices = ["Rock", "Paper", "Scissors"]
+const computerChoiceDisplay = document.getElementsByClassName('computer_choice')[0];
+const userChoiceDisplay = document.getElementsByClassName('user_choice')[0];
+const resultDisplay = document.getElementsByClassName('result')[0];
+const choicesContainer = document.getElementsByClassName('choices_container')[0];
+const choices = ["Rock", "Paper", "Scissors"]
 
-    let userChoice;
-    let computerResult;
+let userChoice;
+let computerChoice;
 
-    const generateComputerChoice = () =>{
-        const computerChoice = Math.floor(Math.random() * choices.length);
-        computerResult = (choices[computerChoice]);
-        computerChoiceDisplay.innerHTML = computerResult;
+const generateComputerChoice = () =>{
+    const randomNumber = Math.floor(Math.random() * choices.length);
+    computerChoice = (choices[randomNumber]);
+    computerChoiceDisplay.innerHTML = computerChoice;
+}
+
+const gameResult = () => {
+    switch (true) {
+        case computerChoice === userChoice:
+            resultDisplay.innerHTML = "It's a draw";
+            break;
+        case computerChoice === "Paper" && userChoice === "Scissors":
+        case computerChoice === "Scissors" && userChoice === "Rock":
+        case computerChoice === "Rock" && userChoice === "Paper":
+            resultDisplay.innerHTML = "You win!";
+            break;
+        default:
+            resultDisplay.innerHTML = "You lose!";
+            break;
     }
+};
 
-    const gameResult = () =>{
-        if (computerResult === userChoice){
-            resultDisplay.innerHTML = "Its a draw"
-        } else if(computerResult === "Paper" && userChoice === "Scissors"){
-            resultDisplay.textContent = "You lose!"
-        } else if(computerResult === "Scissors" && userChoice === "Paper"){
-            resultDisplay.innerHTML = "You win!"
-        } else if(computerResult === "Scissors" && userChoice === "Rock"){
-            resultDisplay.innerHTML = "You win!"
-        } else if(computerResult === "Rock" && userChoice === "Paper"){
-            resultDisplay.innerHTML = "You win!"
-        } 
-    }
-
-    buttons.forEach((button) =>{
-        button.addEventListener('click', (e)=>{
+const gamePlay = () => {
+    choices.forEach(option => {
+        const button = document.createElement('button');
+        button.className = "buttonOption";
+        button.textContent = option;
+        button.addEventListener('click', (e) => {
             userChoice = e.target.textContent;
             userChoiceDisplay.innerHTML = userChoice;
             generateComputerChoice();
             gameResult();
-        })
-    })
-})
+        });
+        choicesContainer.appendChild(button);
+    });
+};
+gamePlay();
+
