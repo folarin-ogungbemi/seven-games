@@ -1,8 +1,8 @@
-const { game } = require("../game");
-
 // Import necessary modules
 const fs = require('fs');
 const { JSDOM } = require('jsdom');
+
+const { game } = require("../game");
 
 // Read the HTML file content
 const htmlContent = fs.readFileSync('simon_calls/index.html', 'utf-8');
