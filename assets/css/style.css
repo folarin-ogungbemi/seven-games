@@ -1,0 +1,18 @@
+body{
+    background: #fff;
+}
+
+
+.container{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1rem;
+    justify-content: center;
+}
+
+.game{
+    border: 1px solid black;
+    padding: 3rem;
+    text-decoration: none;
+    color: #333;
+}
